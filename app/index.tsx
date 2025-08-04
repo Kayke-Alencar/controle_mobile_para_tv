@@ -6,7 +6,7 @@ import {
     View
 } from "react-native";
 
-import AppButton from "@/components/AppButton"; //button personalizado com TouchableOpacity
+import ListButtons from "@/components/ListButtons"; //button personalizado com TouchableOpacity
 import { LinearGradient } from 'expo-linear-gradient'; //é precisso isntalar essa módulo com o comando npx expo install expo-linear-gradient
 import { Image } from "react-native";
 
@@ -15,8 +15,6 @@ import local_device_searchModule from "@/modules/connection/src/local_device_sea
 
 export default function index(){
    const teste = local_device_searchModule.hello();
-
-   
 
     const marcas = [
         {name:"Lg", logo:require("../assets/images/marcas/lg-icon.png")}, //o rquire é usado aqui pq sourece no Image nao aceita caminhos dinâmicos
@@ -27,11 +25,7 @@ export default function index(){
 
     //func que constroi 
     let render = ({item})=>( 
-        <View style={style.marcas}>
-            {/*<Button title={item.name}/> nao usado por problemas ao estilizar !*/ }
-            <AppButton title={item.name} teste="sapo"></AppButton>
-            <Image style={style.logos} source={item.logo}/> {/*o sourece nao aceita caminhos dinâmicos*/}
-        </View>
+        <ListButtons title={item.name} link={"/layout_controle"} image={"withImage"} imageRequiere={item.logo}/>
     );
     return (
         <LinearGradient 
@@ -60,20 +54,9 @@ export default function index(){
 }
 
 const style = StyleSheet.create({
-    marcas:{
-        flexDirection: 'row', //um do lado do outro
-        alignItems:"center", 
-        justifyContent:"space-between", //espaço entre os itens
-
-        padding:15,
-        borderTopColor:"rgba(48, 48, 48, 1)", 
-        borderTopWidth: 3,
-    },
-
     teste:{
         width:"100%",
-        height:"100%"
-        
+        height:"100%" 
     },
 
     header:{
@@ -81,7 +64,7 @@ const style = StyleSheet.create({
         justifyContent:"center",
         alignItems:"center", 
 
-        paddingBottom:40,
+        paddingBottom:50,
         paddingTop:20, 
 
     },
@@ -102,13 +85,6 @@ const style = StyleSheet.create({
         width:50,
         height:50,
     },
-
-    logos:{
-        resizeMode:"contain",
-        width:70,
-        height:50,
-        marginRight:10,
-    }
 })
 
 /*  

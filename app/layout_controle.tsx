@@ -1,4 +1,4 @@
-import React from "react";
+    import React from "react";
 import { StyleSheet } from "react-native";
 
 import { LinearGradient } from 'expo-linear-gradient'; //é precisso isntalar essa módulo com o comando npx expo install expo-linear-gradient
