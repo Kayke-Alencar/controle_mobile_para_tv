@@ -1,6 +1,6 @@
 # 📱 Controle Remoto Mobile para Smart TVs
 
-Este é um projeto **em desenvolvimento** de um aplicativo mobile, em **React Native**
+Este é um projeto **em andamento** de um aplicativo mobile, em **React Native**
 
 ---
 
