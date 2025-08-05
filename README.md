@@ -7,6 +7,7 @@ Este é um projeto **em andamento** de um aplicativo mobile, em **React Native**
 ## 🎯 Objetivo
 
 Desenvolver um aplicativo simples e funcional que permita o usuário controlar sua Smart TV atravez de seu dispositivo android (ligar/desligar, mudar canal, controlar volume, acessar apps, etc) via rede local.
+<br></br>
 (Por agora o APP esta sendo pensado para funcionar apenas em dispositivos android)
 ---
 
