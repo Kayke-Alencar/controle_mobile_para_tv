@@ -29,4 +29,4 @@ Desenvolver um aplicativo simples e funcional que permita o usuário controlar s
 - Módulo nativo para escanear dispositivos na rede (Kotlin)
 - Identificação automática de marcas e modelos de TV
 - Conexão e pareamento com a TV
-- Suporte completo a comandos remotos (ligar/desligar, volume, canal, apps)
+- Suporte completo a comandos remotos (volume, canais, apps, desligar)
