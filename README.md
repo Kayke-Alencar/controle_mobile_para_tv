@@ -14,7 +14,7 @@ Desenvolver um aplicativo simples e funcional que permita o usuário controlar s
 
 - React Native
 - Expo (com suporte a módulos nativos via EAS)
-- [Kotlin](https://kotlinlang.org/) (para funcionalidades nativas de rede no Android)
+- Kotlin (para funcionalidades nativas de rede no Android)
 - Integração com APIs e protocolos de fabricantes como:
   - Samsung (SmartThings)
   - Philips (JointSPACE)
