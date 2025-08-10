@@ -25,7 +25,7 @@ export default function index(){
 
     //func que constroi 
     let render = ({item})=>( 
-        <ListButtons title={item.name} link={"/layout_controle"} image={"withImage"} imageRequiere={item.logo}/>
+        <ListButtons title={item.name} link={"/screen_connection"} image={"withImage"} imageRequiere={item.logo}/>
     );
     return (
         <LinearGradient 
