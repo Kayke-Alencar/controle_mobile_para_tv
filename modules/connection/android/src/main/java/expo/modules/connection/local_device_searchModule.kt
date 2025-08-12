@@ -11,11 +11,14 @@ class local_device_searchModule : Module() {
 
 
   override fun definition() = ModuleDefinition {
-    Name("local_device_search") // Define o nome do módulo que o código JavaScript usará para se referir ao módulo. Recebe uma string como argumento.
+    Name("local_device_search") // Define o nome do módulo que o código Js usará para se referir ao módulo. Recebe uma string como argumento.
 
-    Function("hello") {
-      // Define uma função chamada "hello" que pode ser chamada do código JavaScript.
-      "Hello from local_device_searchModule"
+
+    // Define uma função chamada "GetDevices" que pode ser chamada do código JavaScript.
+    Function("GetDevices"){ ip: String ->   //ip: string é um argumento que a função recebe do código Js.
+      val t = ip+" deu certo"
+
+      t
     }
   }
 }

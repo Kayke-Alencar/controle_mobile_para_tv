@@ -10,12 +10,7 @@ import ListButtons from "@/components/ListButtons"; //button personalizado com T
 import { LinearGradient } from 'expo-linear-gradient'; //é precisso isntalar essa módulo com o comando npx expo install expo-linear-gradient
 import { Image } from "react-native";
 
-
-import local_device_searchModule from "@/modules/connection/src/local_device_searchModule";
-
 export default function index(){
-   const teste = local_device_searchModule.hello();
-
     const marcas = [
         {name:"Lg", logo:require("../assets/images/marcas/lg-icon.png")}, //o rquire é usado aqui pq sourece no Image nao aceita caminhos dinâmicos
         {name:"Samsung",logo:require("../assets/images/marcas/sansung-icon.png")},
