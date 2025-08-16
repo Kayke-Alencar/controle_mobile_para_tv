@@ -29,7 +29,7 @@ allprojects {
 
     google()
     mavenCentral()
-    maven { url 'https://www.jitpack.io' }
+    //maven { url 'https://www.jitpack.io' } //jitpack para buscar bibliotecas direto do github (para instalar o KScanNet)
   }
 }
 
