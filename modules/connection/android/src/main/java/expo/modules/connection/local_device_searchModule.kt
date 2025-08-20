@@ -22,7 +22,7 @@ class local_device_searchModule : Module() {
     Function("GetDevices") { ipPrefix: String, promise: Promise ->//ipPrefix:IP da rede em formato de string que é um argumento recebido do código Js.
 
 
-    // Lista que vai armazenar os dispositivos encontrados na redeCada dispositivo será armazenado como um mapa com "ip" e "hostname"
+    // Lista que vai armazenar os dispositivos encontrados na rede Cada dispositivo será armazenado com "ip" e "hostname"
     val activeHosts = mutableListOf<Map<String, String>>()
 
     // Criamos um "executor" com 20 threads. 
