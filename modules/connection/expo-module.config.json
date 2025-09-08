@@ -1,9 +1,0 @@
-{
-  "platforms": ["apple", "android", "web"],
-  "apple": {
-    "modules": ["local_device_searchModule"]
-  },
-  "android": {
-    "modules": ["expo.modules.connection.local_device_searchModule"]
-  }
-}
