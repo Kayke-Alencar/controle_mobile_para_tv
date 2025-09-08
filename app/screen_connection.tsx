@@ -1,68 +1,60 @@
-import React from "react";
-import {
-    FlatList,
-    Text,
-    View,
-} from "react-native";
+import React, { useEffect, useState } from 'react';
+import { FlatList, StyleSheet, Text, View } from 'react-native';
+import Zeroconf from 'react-native-zeroconf';
 
-import local_device_searchModule from "@/modules/connection/src/local_device_searchModule";
-import { useEffect, useState } from "react";
-import getLocalIp from "../services/getLocalIp"; // Importa a função para obter o IP local
+export default function App() {
+  const [devices, setDevices] = useState([]);
+  const zeroconf = new Zeroconf();
 
+  useEffect(() => {
+    zeroconf.on('start', () => console.log('🔎 Buscando dispositivos Chromecast/Android TV...'));
 
-export default function screen_connection() { 
-    const [localIp, setLocalIp] = useState("");
-    const [teste, setTeste] = useState([]);
+    zeroconf.on('found', (name) => console.log('Serviço encontrado:', name));
 
-    useEffect(() => {
-        async function fetchLocalIp() {
-           const ip = await getLocalIp(); // o await so pode ser usado dentro de uma função async
-            setLocalIp(ip); 
-
-        };fetchLocalIp();
-    }, []); // Chama a função para obter o IP local quando a tela e iniciada
-
-    useEffect(() => { 
-        const devices = async() => {
-            try {
-                const result = await local_device_searchModule.searchDevices(localIp); // Chama o método do módulo nativo
-                setTeste(result); // Atualiza o estado com os dispositivos encontrados
-            } catch (error) {
-                console.error("Erro ao buscar dispositivos:", error);
-            }
+    zeroconf.on('resolved', (service) => {
+      console.log('✅ Serviço resolvido:', service);
+      // adiciona à lista se ainda não estiver
+      setDevices(prev => {
+        if (!prev.some(d => d.host === service.host && d.port === service.port)) {
+          return [...prev, service];
         }
-        
+        return prev;
+      });
+    });
 
-        /*
-        const array =             
-            [
-                {"ip": "192.168.0.1", "hostname": "router"},
-                {"ip": "192.168.0.5", "hostname": "PC-Kayke"},
-                {"ip": "192.168.0.10", "hostname": "SmartTV"}
-            ]
-        */
-       
-       
-    }, [localIp]); // Chama a função quando o IP local for atualizado
+    zeroconf.on('error', (err) => console.log('Erro Zeroconf:', err));
 
-    function render({item}) {
-        return (
-            <View style={{ padding: 10, borderBottomWidth: 1, borderColor: '#ccc' }}>
-                <Text>IP: {item.ip}</Text>
-                <Text>Hostname: {item.hostname}</Text>
-            </View>
-        );
-    }
+    zeroconf.scan('googlecast', 'tcp', 'local.');
 
-    return (
-        <View>
-            <Text style={{ fontSize: 20, margin: 10 }}>Dispositivos na rede {localIp}:</Text>
-            <FlatList 
-                data={teste} // Array de dispositivos encontrados
-                renderItem={render} // Função que renderiza cada item
-                keyExtractor={(item) => item.ip} // Chave única para cada item
-            />
-            
-        </View>
-    );
+    return () => {
+      zeroconf.stop();
+      zeroconf.removeAllListeners();
+    };
+  }, []);
+
+  return (
+    <View style={styles.container}>
+      <FlatList
+        style={styles.list}
+        data={devices}
+        keyExtractor={(item, index) => index.toString()}
+        renderItem={({ item }) => (
+          <View style={styles.card}>
+            <Text style={styles.title}>{item.name}</Text>
+            <Text style={styles.text}>IP: {item.host}</Text>
+            <Text style={styles.text}>Porta: {item.port}</Text>
+          </View>
+        )}
+        ListEmptyComponent={<Text style={styles.text}>Nenhum dispositivo encontrado</Text>}
+      />
+    </View>
+  );
 }
+
+const styles = StyleSheet.create({
+  container: { flex: 1, padding: 20, backgroundColor: '#fff' },
+  list: { marginTop: 20 },
+  card: { padding: 15, backgroundColor: '#f5f5f5', borderRadius: 8, marginBottom: 10 },
+  title: { fontSize: 16, fontWeight: 'bold' },
+  text: { fontSize: 14 }
+});
