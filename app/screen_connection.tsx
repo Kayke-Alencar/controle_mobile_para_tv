@@ -30,7 +30,7 @@ export default function App() {
       zeroconf.stop();
       zeroconf.removeAllListeners();
     };
-  }, []);
+  }, []); //Vai iniciar assim que a tela for carregada
 
   return (
     <View style={styles.container}>

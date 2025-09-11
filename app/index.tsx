@@ -39,7 +39,7 @@ export default function index(){
                 </View>
 
                 {/*FlatList: é como se fosse usado um loop para montar estruturas repetitivas.*/}
-                <FlatList 
+                <FlatList
                     data={marcas} //array que vai ser usado para "rederizar" os dados
                     renderItem={render} //func que constroi 
                 />

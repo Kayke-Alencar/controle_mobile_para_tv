@@ -6,9 +6,9 @@ export default function ListButtons({title, link, image, imageRequiere}){ //titl
     const objectComponents = {
         withImage:(
             <View style={style.bodyButton}>
-                <TouchableOpacity style={style.btn} onPress={()=>{router.push(link)}}>
+                <TouchableOpacity style={style.btn} onPress={()=>{router.push({pathname:link, params:{marca:title}})}}>
                     <Text style={style.txt}>{title}</Text>
-                    <Image style={style.logos} source={imageRequiere}/> {/*o sourece nao aceita caminhos dinâmicos*/}
+                    <Image style={style.logos} source={imageRequiere}/> {/*o source nao aceita caminhos dinâmicos*/}
                 </TouchableOpacity>
             </View>
         ),
@@ -32,11 +32,13 @@ const style = StyleSheet.create({
         justifyContent:"space-between", //espaço entre os itens
 
         padding:15,
-        borderTopColor:"rgba(48, 48, 48, 1)", 
-        borderTopWidth: 3,
+        backgroundColor:"rgba(48, 48, 48, 1)",
+        borderRadius:10,
+        width:"95%",
+        margin:"auto",
+        marginBottom:5,
 
-
-        marginLeft:10,
+      
     },
 
     btn:{
@@ -45,6 +47,8 @@ const style = StyleSheet.create({
 
         width: "100%",
         height:"100%",
+
+        
     },
 
     logos:{
