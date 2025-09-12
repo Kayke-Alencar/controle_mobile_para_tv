@@ -17,6 +17,7 @@ export default function index(){
         {name:"Philips", logo:require("../assets/images/marcas/philips-icon.png")},                    
         {name:"Multlaser", logo:require("../assets/images/marcas/multilaser-icon.png")},
         {name:"Chromecast", logo:require("../assets/images/marcas/google.png")},
+
     ];
 
     //func que constroi 
@@ -26,7 +27,7 @@ export default function index(){
     return (
         <LinearGradient 
             // Cores do gradiente
-            colors={["rgb(43, 43, 43)", "rgb(22, 22, 22)"]}
+            colors={["rgba(0, 4, 41, 1)", "rgba(0, 1, 17, 1)"]}
             // Direção do gradiente
             start={{ x: 1, y: 0 }}
             end={{ x: 0, y: 1 }}
@@ -35,7 +36,7 @@ export default function index(){
         >
             <View>
                 <View style={style.header}>
-                    <Text style={style.titulo}>Qual marca ?</Text>
+                    <Text style={style.titulo}>Escolha a marca</Text>
                     <Image style={style.tv} source={require("../assets/images/tv.png")}/>
                 </View>
 
@@ -60,7 +61,7 @@ const style = StyleSheet.create({
         justifyContent:"center",
         alignItems:"center", 
 
-        paddingBottom:50,
+        paddingBottom:30,
         paddingTop:20, 
 
     },

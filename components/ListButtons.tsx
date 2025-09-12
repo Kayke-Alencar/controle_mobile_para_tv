@@ -12,14 +12,6 @@ export default function ListButtons({title, link, image, imageRequiere}){ //titl
                 </TouchableOpacity>
             </View>
         ),
-
-        notImage:(
-            <View style={style.bodyButton}>
-                <TouchableOpacity style={style.btn} onPress={()=>{router.push(link)}}>
-                    <Text style={style.txt}>{title}</Text>
-                </TouchableOpacity>
-            </View>
-        )
     }
 
     return objectComponents[image]; //retorna o componente de acordo com a props image
@@ -31,9 +23,9 @@ const style = StyleSheet.create({
         justifyContent:"space-between", //espaço entre os itens
 
         padding:17,
-        backgroundColor:"rgba(48, 48, 48, 1)",
-        borderRadius:17,
-        width:"95%",
+        backgroundColor:"rgba(0, 11, 71, 1)",
+        borderRadius:30,
+        width:"90%",
         margin:"auto",
         marginBottom:10,
 
@@ -57,7 +49,7 @@ const style = StyleSheet.create({
     },
 
     txt:{
-        color:"gray",
+        color:"white",
         fontSize:30,
     }
 })  

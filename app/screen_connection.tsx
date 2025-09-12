@@ -1,7 +1,18 @@
+import {
+  FlatList,
+  Text,
+  View
+} from 'react-native';
+
 import { useLocalSearchParams } from 'expo-router';
 import React, { useEffect, useState } from 'react';
-import { FlatList, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 import Zeroconf from 'react-native-zeroconf';
+
+import { LinearGradient } from 'expo-linear-gradient';
+
+
+
 export default function App() {
 
   const [devices, setDevices] = useState([]);
@@ -18,7 +29,12 @@ export default function App() {
   useEffect(() => {
     const SearchDevices = () => {
       zeroconf.scan('googlecast', 'tcp', 'local.'); //Inicia a busca na rede e mostra a msg no console
+      
+      //zeroconf.scan('airplay', 'tcp', 'local.') // TVS LG, Samsung, Sony, Vizio, TCL
+
+
       zeroconf.on('start', () => console.log('🔎 Buscando dispositivos Chromecast/Android TV...')); //avisa quando a busaca comecou 
+
       zeroconf.on('found', (name) => console.log('Serviço encontrado:', name)); //disparado quando qualquer serviço é detectado na rede., Ele captura o nome e mostra no console
 
       zeroconf.on('resolved', (service) => { //resolved é isparado quando o Zeroconf consegue obter todas as informações do serviço, como IP, porta, tipo, etc.s
@@ -57,46 +73,77 @@ export default function App() {
         setDevicePerMark(
           devices.filter((iten)=>iten.name.toLocaleLowerCase().includes(selectMark))
         )
-
         setTeste(selectMark)
       }
       else{
         return undefined
       }  
     }
-
     filterDevices();
 
   }, [devices])
 
-
-
-
   return (
-    <View style={styles.container}>
+    <LinearGradient
+      // Cores do gradiente
+      colors={["rgba(0, 4, 41, 1)", "rgba(0, 1, 17, 1)"]}
+      // Direção do gradiente
+      start={{ x: 1, y: 0 }}
+      end={{ x: 0, y: 1 }}
+      // Estilo da área com gradiente
+      style={styles.teste}
+    >
+
+    
       <FlatList
         style={styles.list}
         data={devicePerMark}
-        keyExtractor={(item, index) => index.toString()}
+
         renderItem={({ item }) => (
           <View style={styles.card} >
             <Text style={styles.title}>{item.txt.fn}</Text>
             <Text style={styles.text}>IP: {item.host}</Text>
-            <Text style={styles.text}>Porta: {item.port}</Text>
-            <Text style={styles.text}>{teste}</Text>
           </View>
         )}
-        ListEmptyComponent={<Text style={styles.text}>Nenhum dispositivo encontrado</Text>}
+        
+        ListEmptyComponent={
+        <Text style={styles.text}>Nenhum dispositivo encontrado</Text>
+      }
       />
 
-    </View>
+
+      </LinearGradient >
   );
 }
 
 const styles = StyleSheet.create({
   container: { flex: 1, padding: 20, backgroundColor: '#fff' },
   list: { marginTop: 20 },
-  card: { padding: 15, backgroundColor: '#f5f5f5', borderRadius: 8, marginBottom: 10 },
-  title: { fontSize: 16, fontWeight: 'bold' },
-  text: { fontSize: 14 }
+
+  card: { 
+    padding: 20, 
+    backgroundColor: '#a7aabdff', 
+    width:"95%",
+    height:"90%",
+
+    margin:"auto",
+    borderRadius:15,
+    marginBottom: 10 
+  },
+
+  title: { 
+    fontSize: 30, 
+    fontWeight: 'bold', 
+    paddingBottom:5,
+    marginTop:-8,
+  },
+  text: { 
+    fontSize: 20,
+
+  },
+  teste: {
+    width:"100%",
+    height:"100%",
+
+  },
 });
