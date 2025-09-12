@@ -28,15 +28,14 @@ export default function ListButtons({title, link, image, imageRequiere}){ //titl
 const style = StyleSheet.create({
     bodyButton:{
         flexDirection: 'row', //um do lado do outro
-        alignItems:"center", 
         justifyContent:"space-between", //espaço entre os itens
 
-        padding:15,
+        padding:17,
         backgroundColor:"rgba(48, 48, 48, 1)",
-        borderRadius:10,
+        borderRadius:17,
         width:"95%",
         margin:"auto",
-        marginBottom:5,
+        marginBottom:10,
 
       
     },
@@ -44,22 +43,21 @@ const style = StyleSheet.create({
     btn:{
         flexDirection: 'row',
         justifyContent:"space-between",
-
-        width: "100%",
-        height:"100%",
-
+        margin:"auto",
         
+        width: "95%",
+        height:"100%",
     },
 
     logos:{
         resizeMode:"contain",
-        width:70,
+        width:75,
         height:50,
         marginRight:10,
     },
 
     txt:{
         color:"gray",
-        fontSize:27,
+        fontSize:30,
     }
 })  

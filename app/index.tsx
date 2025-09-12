@@ -65,7 +65,7 @@ const style = StyleSheet.create({
     },
 
     titulo:{
-        fontSize:30,
+        fontSize:40,
         textAlign:"center",
         color:"white",
         marginRight: 10,
@@ -77,8 +77,8 @@ const style = StyleSheet.create({
         flexDirection: 'row',
         resizeMode:"contain",
 
-        width:50,
-        height:50,
+        width:60,
+        height:60,
     },
 })
 
