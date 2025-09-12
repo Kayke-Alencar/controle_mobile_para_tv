@@ -5,6 +5,7 @@ import Zeroconf from 'react-native-zeroconf';
 export default function App() {
 
   const [devices, setDevices] = useState([]);
+  const [devicePerMark, setDevicePerMark] = useState([])
   const zeroconf = new Zeroconf();
 
 
@@ -23,8 +24,10 @@ export default function App() {
       zeroconf.on('resolved', (service) => { //resolved é isparado quando o Zeroconf consegue obter todas as informações do serviço, como IP, porta, tipo, etc.s
         console.log('✅ Serviço resolvido:', service); //service é um obj com todos os detalhes do dispositivo encontrado
        
-        setDevices(prev => {
-          if (!prev.some(d => d.host === service.host && d.port === service.port)) {
+        setDevices(prev => { //prev é o estado anterior do devices
+
+          // o some() verifica item por item do array se condicoes dentro dos parenteses sao verdadeira e retorna true ou false
+          if (!prev.some(d => d.host === service.host && d.port === service.port)) { 
             return [...prev, service];
           }
           return prev;
@@ -46,17 +49,25 @@ export default function App() {
 
 
   useEffect(() => {
+    
     const filterDevices = () => {
-      let marca = "Chromecast"
-      let i = 0
-     //const sla = devices[0].host
-      
-      
+      if(devices.length != 0){ //quando a pg é iniciada e devices e setado como um array fazio o que chama a func e gera erro, pois devices ainda nao foi montado
+        let selectMark = `${marca}`.toLocaleLowerCase() //força marca para string com caixa baixa
+
+        setDevicePerMark(
+          devices.filter((iten)=>iten.name.toLocaleLowerCase().includes(selectMark))
+        )
+
+        setTeste(selectMark)
+      }
+      else{
+        return undefined
+      }  
     }
 
     filterDevices();
 
-  }, devices)
+  }, [devices])
 
 
 
@@ -65,11 +76,11 @@ export default function App() {
     <View style={styles.container}>
       <FlatList
         style={styles.list}
-        data={devices}
+        data={devicePerMark}
         keyExtractor={(item, index) => index.toString()}
         renderItem={({ item }) => (
           <View style={styles.card} >
-            <Text style={styles.title}>{item.name}</Text>
+            <Text style={styles.title}>{item.txt.fn}</Text>
             <Text style={styles.text}>IP: {item.host}</Text>
             <Text style={styles.text}>Porta: {item.port}</Text>
             <Text style={styles.text}>{teste}</Text>

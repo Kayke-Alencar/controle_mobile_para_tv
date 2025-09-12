@@ -15,7 +15,8 @@ export default function index(){
         {name:"Lg", logo:require("../assets/images/marcas/lg-icon.png")}, //o rquire é usado aqui pq sourece no Image nao aceita caminhos dinâmicos
         {name:"Samsung",logo:require("../assets/images/marcas/sansung-icon.png")},
         {name:"Philips", logo:require("../assets/images/marcas/philips-icon.png")},                    
-        {name:"Multlaser", logo:require("../assets/images/marcas/multilaser-icon.png")}
+        {name:"Multlaser", logo:require("../assets/images/marcas/multilaser-icon.png")},
+        {name:"Chromecast", logo:require("../assets/images/marcas/google.png")},
     ];
 
     //func que constroi 
