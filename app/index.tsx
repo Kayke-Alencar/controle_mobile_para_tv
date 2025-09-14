@@ -1,13 +1,15 @@
 import React from "react";
 import {
+    Image,
     StyleSheet,
     Text,
     View
 } from "react-native";
 
+import Background from "@/components/Background"; //funco com linear gradient
 import ListButtons from "@/components/ListButtons"; //button personalizado com TouchableOpacity
-import { LinearGradient } from 'expo-linear-gradient'; //é precisso isntalar essa módulo com o comando npx expo install expo-linear-gradient
-import { Image } from "react-native";
+
+/* Todo componente comeca com letra Maiuscula !*/
 
 export default function index(){
     const marcas = [
@@ -19,32 +21,23 @@ export default function index(){
     ];
 
     return (
-        <LinearGradient 
-            // Cores do gradiente
-            colors={["rgba(0, 4, 41, 1)", "rgba(0, 1, 17, 1)"]}
-            // Direção do gradiente
-            start={{ x: 1, y: 0 }}
-            end={{ x: 0, y: 1 }}
-            // Estilo da área com gradiente
-            style={style.teste} 
-        >
-            <View>
-                <View style={style.header}>
-                    <Text style={style.titulo}>Escolha a marca</Text>
-                    <Image style={style.tv} source={require("../assets/images/tv.png")}/>
-                </View>
+        <Background>
 
-                <ListButtons array={marcas} dest={"/screen_connection"} >
-                    {(item) => (
-                        <>
-                            <Text style={style.txt}>{item.name}</Text>
-                            <Image style={style.logos} source={item.logo} /> {/*o source nao aceita caminhos dinâmicos*/}
-                        </>
-                    )}
-                </ListButtons>
-       
+            <View style={style.header}>
+                <Text style={style.titulo}>Escolha a marca</Text>
+                <Image style={style.tv} source={require("../assets/images/tv.png")} />
             </View>
-        </LinearGradient>
+
+            <ListButtons array={marcas} dest={"screen_connection"} >
+                {(item) => (
+                    <>
+                        <Text style={style.txt}>{item.name}</Text>
+                        <Image style={style.logos} source={item.logo} /> {/*o source nao aceita caminhos dinâmicos*/}
+                    </>
+                )}
+            </ListButtons>
+
+        </Background>
     );
 }
 

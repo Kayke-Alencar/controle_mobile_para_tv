@@ -1,44 +1,36 @@
 import {
-  FlatList,
   Text,
   View
 } from 'react-native';
 
-import { LinearGradient } from 'expo-linear-gradient';
+import Background from '@/components/Background';
+import ListButtons from '@/components/ListButtons';
 import React from 'react';
 import { StyleSheet } from 'react-native';
 
+
 import searchdevices from '../components/SearchDevices';
+
+
 
 export default function App() {
   const devices = searchdevices()
 
   return (
-    <LinearGradient
-      // Cores do gradiente
-      colors={["rgba(0, 4, 41, 1)", "rgba(0, 1, 17, 1)"]}
-      // Direção do gradiente
-      start={{ x: 1, y: 0 }}
-      end={{ x: 0, y: 1 }}
-      // Estilo da área com gradiente
-      style={styles.teste}
-    >
-      <FlatList
-        style={styles.list}
-        data={devices}
-
-        renderItem={({item}) => (
-          <View style={styles.card} >
-            <Text style={styles.title}>{item.name}</Text> {/* item.txt.fn*/}
-            <Text style={styles.text}>IP: {item.host}</Text>
-          </View>
+    <Background>
+      <ListButtons array={devices} dest={"layout_controle"}>
+        {(item)=>(
+          <>
+            <View>
+              <Text style={styles.title}>{item.name}</Text>
+              <Text>{item.host}</Text>
+            </View>
+          </>
         )}
-        
-        ListEmptyComponent={
-        <Text style={styles.text}>Nenhum dispositivo encontrado</Text>
-      }
-      />
-      </LinearGradient >
+
+      </ListButtons>
+
+    </Background>
   );
 }
 

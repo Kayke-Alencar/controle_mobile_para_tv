@@ -2,7 +2,7 @@ import { router } from "expo-router";
 import React from "react";
 import { FlatList, StyleSheet, TouchableOpacity, View } from "react-native";
 
-export default function ListButtons({array, dest, children }){ //title é uma props
+export default function ListButtons({array, dest, children }){ //tbm poderia ussar apenas (props) assim fica mais 
     
     const style = StyleSheet.create({
     bodyButton:{
@@ -10,7 +10,7 @@ export default function ListButtons({array, dest, children }){ //title é uma pr
         justifyContent:"space-between", //espaço entre os itens
 
         padding:17,
-        backgroundColor:"rgba(199, 199, 199, 1)",
+        backgroundColor:"rgba(206, 206, 206, 1)",
         borderRadius:30,
         width:"90%",
         margin:"auto",
