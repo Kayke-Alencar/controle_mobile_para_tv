@@ -2,21 +2,19 @@ import { router } from "expo-router";
 import React from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
-export default function ListButtons({title, link, image, imageRequiere}){ //title é uma props
+export default function ListButtons({title, dest, imageRequiere, service}){ //title é uma props
     const objectComponents = {
         withImage:(
             <View style={style.bodyButton}>
-                <TouchableOpacity style={style.btn} onPress={()=>{router.push({pathname:link, params:{marca:title}})}}>
+                <TouchableOpacity style={style.btn} onPress={()=>{router.push({pathname:dest, params:{marca:title, service:service}})}}>
                     <Text style={style.txt}>{title}</Text>
                     <Image style={style.logos} source={imageRequiere}/> {/*o source nao aceita caminhos dinâmicos*/}
                 </TouchableOpacity>
             </View>
         ),
     }
-
-    return objectComponents[image]; //retorna o componente de acordo com a props image
+    return objectComponents.withImage
 }
-
 const style = StyleSheet.create({
     bodyButton:{
         flexDirection: 'row', //um do lado do outro
@@ -28,8 +26,6 @@ const style = StyleSheet.create({
         width:"90%",
         margin:"auto",
         marginBottom:10,
-
-      
     },
 
     btn:{

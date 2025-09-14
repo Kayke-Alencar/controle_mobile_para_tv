@@ -12,17 +12,17 @@ import { Image } from "react-native";
 
 export default function index(){
     const marcas = [
-        {name:"Lg", logo:require("../assets/images/marcas/lg-icon.png")}, //o rquire é usado aqui pq sourece no Image nao aceita caminhos dinâmicos
-        {name:"Samsung",logo:require("../assets/images/marcas/sansung-icon.png")},
-        {name:"Philips", logo:require("../assets/images/marcas/philips-icon.png")},                    
-        {name:"Multlaser", logo:require("../assets/images/marcas/multilaser-icon.png")},
-        {name:"Chromecast", logo:require("../assets/images/marcas/google.png")},
+        {name:"Lg", logo:require("../assets/images/marcas/lg-icon.png"), service:"airplay"}, //o rquire é usado aqui pq sourece no Image nao aceita caminhos dinâmicos
+        {name:"Samsung",logo:require("../assets/images/marcas/sansung-icon.png"), service:"airplay"},
+        {name:"Philips", logo:require("../assets/images/marcas/philips-icon.png"), service:"googlecast"},                    
+        {name:"Multlaser", logo:require("../assets/images/marcas/multilaser-icon.png"), service:"googlecast" },
+        {name:"Chromecast", logo:require("../assets/images/marcas/google.png"), service:"googlecast"},
 
     ];
 
     //func que constroi 
-    let render = ({item})=>( 
-        <ListButtons title={item.name} link={"/screen_connection"} image={"withImage"} imageRequiere={item.logo}/>
+    let render = ({item: iten})=>( 
+        <ListButtons title={iten.name} dest={"/screen_connection"} imageRequiere={iten.logo} service={iten.service}/>
     );
     return (
         <LinearGradient 
