@@ -27,7 +27,7 @@ export default function App() {
         style={styles.list}
         data={devices}
 
-        renderItem={({ item }) => (
+        renderItem={({item}) => (
           <View style={styles.card} >
             <Text style={styles.title}>{item.name}</Text> {/* item.txt.fn*/}
             <Text style={styles.text}>IP: {item.host}</Text>

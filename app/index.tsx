@@ -1,6 +1,5 @@
 import React from "react";
 import {
-    FlatList,
     StyleSheet,
     Text,
     View
@@ -17,13 +16,8 @@ export default function index(){
         {name:"Philips", logo:require("../assets/images/marcas/philips-icon.png"), service:"googlecast"},                    
         {name:"Multlaser", logo:require("../assets/images/marcas/multilaser-icon.png"), service:"googlecast" },
         {name:"Chromecast", logo:require("../assets/images/marcas/google.png"), service:"googlecast"},
-
     ];
 
-    //func que constroi 
-    let render = ({item: iten})=>( 
-        <ListButtons title={iten.name} dest={"/screen_connection"} imageRequiere={iten.logo} service={iten.service}/>
-    );
     return (
         <LinearGradient 
             // Cores do gradiente
@@ -40,17 +34,34 @@ export default function index(){
                     <Image style={style.tv} source={require("../assets/images/tv.png")}/>
                 </View>
 
-                {/*FlatList: é como se fosse usado um loop para montar estruturas repetitivas.*/}
-                <FlatList
-                    data={marcas} //array que vai ser usado para "rederizar" os dados
-                    renderItem={render} //func que constroi 
-                />
+                <ListButtons array={marcas} dest={"/screen_connection"} >
+                    {(item) => (
+                        <>
+                            <Text style={style.txt}>{item.name}</Text>
+                            <Image style={style.logos} source={item.logo} /> {/*o source nao aceita caminhos dinâmicos*/}
+                        </>
+                    )}
+                </ListButtons>
+       
             </View>
         </LinearGradient>
     );
 }
 
 const style = StyleSheet.create({
+    txt:{
+        color:"black",
+        fontSize:30,
+    },
+
+    logos:{
+        resizeMode:"contain",
+        width:75,
+        height:50,
+        marginRight:10,
+    },
+
+
     teste:{
         width:"100%",
         height:"100%" 

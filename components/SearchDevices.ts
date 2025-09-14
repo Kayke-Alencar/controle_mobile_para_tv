@@ -49,7 +49,7 @@ export default function searchdevices() {
                 let selectMark = `${params.marca}`.toLocaleLowerCase() //força marca para string com caixa baixa
 
                 setDeviceByMark(
-                    devices.filter((iten) => iten.name.toLocaleLowerCase().includes(selectMark))
+                    devices.filter((item) => item.name.toLocaleLowerCase().includes(selectMark))
                 )
                 setTeste(selectMark)
             }
