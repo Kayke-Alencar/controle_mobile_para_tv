@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useLocalSearchParams } from 'expo-router';
 import Zeroconf from 'react-native-zeroconf';
 
-export default function searchdevices() {
+export default function searchdevices(Params) {
     const [devices, setDevices] = useState([]);
     const [deviceByMark, setDeviceByMark] = useState([])
     const zeroconf = new Zeroconf();
@@ -16,7 +16,7 @@ export default function searchdevices() {
     const search = () => {
         zeroconf.scan(`${params.service}`, 'tcp', 'local.') // TVS LG, Samsung, Sony, Vizio, TCL
 
-        zeroconf.on('start', () => console.log('🔎 Buscando dispositivos Chromecast/Android TV...')); //avisa quando a busaca comecou 
+        zeroconf.on('start', () => console.log(`🔎 Buscando dispositivos ${params.marca}`)); //avisa quando a busaca comecou 
 
         zeroconf.on('found', (name) => console.log('Serviço encontrado:', name)); //disparado quando qualquer serviço é detectado na rede., Ele captura o nome e mostra no console
 
@@ -24,7 +24,6 @@ export default function searchdevices() {
             console.log('✅ Serviço resolvido:', service); //service é um obj com todos os detalhes do dispositivo encontrado
 
             setDevices(prev => { //prev é o estado anterior do devices
-
                 // o some() verifica item por item do array se a condicao dentro dos parenteses for verdadeiras e retorna true ou false
                 if (!prev.some(d => d.host === service.host && d.port === service.port)) {
                     return [...prev, service];

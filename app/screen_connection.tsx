@@ -3,31 +3,37 @@ import {
   View
 } from 'react-native';
 
-import Background from '@/components/Background';
-import ListButtons from '@/components/ListButtons';
 import React from 'react';
 import { StyleSheet } from 'react-native';
 
+import { useLocalSearchParams } from 'expo-router/build/hooks';
 
+import Background from '@/components/Background';
+import ListButtons from '@/components/ListButtons';
 import searchdevices from '../components/SearchDevices';
 
 
 
 export default function App() {
-  const devices = searchdevices()
+  const params = useLocalSearchParams()
+  const devices = searchdevices(params)
 
   return (
     <Background>
+
+      <View style={{ marginTop: 40 }}> {/* Apenas para o primeiro btt nao grudar em cima  */}
+
+      </View>
+
       <ListButtons array={devices} dest={"layout_controle"}>
-        {(item)=>(
+        {(item) => (
           <>
             <View>
-              <Text style={styles.title}>{item.name}</Text>
-              <Text>{item.host}</Text>
+              <Text style={styles.title}>{item.name.slice(0, 10)}.....</Text>
+              <Text style={styles.text}>{item.host}</Text>
             </View>
           </>
         )}
-
       </ListButtons>
 
     </Background>
@@ -38,6 +44,8 @@ export default function App() {
 const styles = StyleSheet.create({
   container: { flex: 1, padding: 20, backgroundColor: '#fff' },
   list: { marginTop: 20 },
+
+
 
   card: { 
     padding: 20, 
@@ -52,7 +60,7 @@ const styles = StyleSheet.create({
 
   title: { 
     fontSize: 30, 
-    fontWeight: 'bold', 
+    //fontWeight: 'bold', 
     paddingBottom:5,
     marginTop:-8,
   },
