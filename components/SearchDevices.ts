@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 
-import { useLocalSearchParams } from 'expo-router';
 import Zeroconf from 'react-native-zeroconf';
 
 export default function searchdevices(Params) {
@@ -10,13 +9,12 @@ export default function searchdevices(Params) {
 
 
     //Só pode ser chamada aqui, diretamente no corpo do componente nunca dentro de um func
-    const params = useLocalSearchParams() // vai devolver um objeto com os parametros enviados pelas rotas do router, No caso a marca e o servico de busca da TV.
     const [teste, setTeste] = useState("undefinid")
 
     const search = () => {
-        zeroconf.scan(`${params.service}`, 'tcp', 'local.') // TVS LG, Samsung, Sony, Vizio, TCL
+        zeroconf.scan(`${Params.service}`, 'tcp', 'local.') // TVS LG, Samsung, Sony, Vizio, TCL
 
-        zeroconf.on('start', () => console.log(`🔎 Buscando dispositivos ${params.marca}`)); //avisa quando a busaca comecou 
+        zeroconf.on('start', () => console.log(`🔎 Buscando dispositivos ${Params.name}`)); //avisa quando a busaca comecou 
 
         zeroconf.on('found', (name) => console.log('Serviço encontrado:', name)); //disparado quando qualquer serviço é detectado na rede., Ele captura o nome e mostra no console
 
@@ -45,7 +43,7 @@ export default function searchdevices(Params) {
     useEffect(() => {
         const filterDevices = () => {
             if (devices.length != 0) { //quando a pg é iniciada e devices e setado como um array vazio o que chama a func e gera erro, pois devices ainda nao foi montado
-                let selectMark = `${params.marca}`.toLocaleLowerCase() //força marca para string com caixa baixa
+                let selectMark = `${Params.name}`.toLocaleLowerCase() //força marca para string com caixa baixa
 
                 setDeviceByMark(
                     devices.filter((item) => item.name.toLocaleLowerCase().includes(selectMark))

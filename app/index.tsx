@@ -18,6 +18,7 @@ export default function index(){
         {name:"Philips", logo:require("../assets/images/marcas/philips-icon.png"), service:"googlecast"},                    
         {name:"Multlaser", logo:require("../assets/images/marcas/multilaser-icon.png"), service:"googlecast" },
         {name:"Chromecast", logo:require("../assets/images/marcas/google.png"), service:"googlecast"},
+        
     ];
 
     return (
@@ -28,7 +29,7 @@ export default function index(){
                 <Image style={style.tv} source={require("../assets/images/tv.png")} />
             </View>
 
-            <ListButtons array={marcas} dest={"screen_connection"} >
+            <ListButtons array={marcas} dest={"/screen_connection"} >
                 {(item) => (
                     <>
                         <Text style={style.txt}>{item.name}</Text>

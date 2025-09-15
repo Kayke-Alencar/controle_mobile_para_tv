@@ -2,7 +2,7 @@ import { router } from "expo-router";
 import React from "react";
 import { FlatList, StyleSheet, TouchableOpacity, View } from "react-native";
 
-export default function ListButtons({array, dest, children }){ //tbm poderia ussar apenas (props) assim fica mais 
+export default function ListButtons({array, dest, children}){ //tbm poderia ussar apenas (props) assim fica mais 
     
     const style = StyleSheet.create({
     bodyButton:{
@@ -27,11 +27,14 @@ export default function ListButtons({array, dest, children }){ //tbm poderia uss
     },
 })  
 
+    let parametros;
+
+
 
     const render = ({ item }) => {
         return (
             <View style={style.bodyButton}>
-                <TouchableOpacity style={style["btn"]} onPress={() => { router.push({ pathname: dest, params: { marca: item.name, service: item.service } }) }}>
+                <TouchableOpacity style={style["btn"]} onPress={() => { router.push({ pathname: dest, params: item}) }}>
                     {children(item)}
                 </TouchableOpacity>
             </View>
