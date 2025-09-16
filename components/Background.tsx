@@ -1,6 +1,6 @@
 import { LinearGradient } from "expo-linear-gradient"
 import React from "react"
-import { StyleSheet, View } from "react-native"
+import { StyleSheet } from "react-native"
 
 export default function Background(props) {
     return (
@@ -13,11 +13,9 @@ export default function Background(props) {
             // Estilo da área com gradiente
             style={style.teste}
         >
-            <View>
-                {props.children} {/*conteudo que vai dentro*/}
-            </View>
-            
-
+       
+                 {props.children} {/*conteudo que vai dentro*/}
+           
 
         </LinearGradient>
     )
@@ -25,8 +23,9 @@ export default function Background(props) {
 
 const style = StyleSheet.create({
     teste:{
-
         width:"100%",
-        height:"100%" 
+        height:"100%",
+
+        alignItems:"center",
     },
 })

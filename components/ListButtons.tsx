@@ -10,9 +10,10 @@ export default function ListButtons({array, dest, children}){ //tbm poderia ussa
         justifyContent:"space-between", //espaço entre os itens
 
         padding:17,
-        backgroundColor:"rgba(206, 206, 206, 1)",
+        backgroundColor:"rgba(207, 207, 207, 1)",
         borderRadius:30,
         width:"90%",
+        //height:75,
         margin:"auto",
         marginBottom:10,
     },
@@ -27,10 +28,6 @@ export default function ListButtons({array, dest, children}){ //tbm poderia ussa
     },
 })  
 
-    let parametros;
-
-
-
     const render = ({ item }) => {
         return (
             <View style={style.bodyButton}>
@@ -41,13 +38,10 @@ export default function ListButtons({array, dest, children}){ //tbm poderia ussa
         );
     }
 
-    const objectComponents = {
-        withImage:(
-            <FlatList
-                data={array}
-                renderItem={render}
+    return (
+        <FlatList
+            data={array}
+            renderItem={render}
             />
-        ),
-    }
-    return objectComponents.withImage
+    );
 }

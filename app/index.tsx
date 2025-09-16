@@ -13,46 +13,51 @@ import ListButtons from "@/components/ListButtons"; //button personalizado com T
 
 export default function index(){
     const marcas = [
-        {name:"Lg", logo:require("../assets/images/marcas/lg-icon.png"), service:"airplay"}, //o rquire é usado aqui pq sourece no Image nao aceita caminhos dinâmicos
-        {name:"Samsung",logo:require("../assets/images/marcas/sansung-icon.png"), service:"airplay"},
-        {name:"Philips", logo:require("../assets/images/marcas/philips-icon.png"), service:"googlecast"},                    
-        {name:"Multlaser", logo:require("../assets/images/marcas/multilaser-icon.png"), service:"googlecast" },
-        {name:"Chromecast", logo:require("../assets/images/marcas/google.png"), service:"googlecast"},
-        
+        {name:"lg", logo:require("../assets/images/marcas/lg-icon.png"), service:"airplay"}, //o rquire é usado aqui pq sourece no Image nao aceita caminhos dinâmicos
+        {name:"samsung",logo:require("../assets/images/marcas/sansung-icon.png"), service:"airplay"},
+        {name:"philips", logo:require("../assets/images/marcas/philips-icon.png"), service:"googlecast"},                    
+        {name:"multlaser", logo:require("../assets/images/marcas/multilaser-icon.png"), service:"googlecast" },
+        {name:"chromecast", logo:require("../assets/images/marcas/google.png"), service:"googlecast"},
+
     ];
 
     return (
         <Background>
+            <View style={style.body}>
+                <View style={style.header}>
+                    <Text style={style.titulo}>Qual marca ?</Text>
+                    <Image style={style.tv} source={require("../assets/images/tv2.png")} />
+                </View>
 
-            <View style={style.header}>
-                <Text style={style.titulo}>Escolha a marca</Text>
-                <Image style={style.tv} source={require("../assets/images/tv.png")} />
+                <ListButtons array={marcas} dest={"/screen_connection"} >
+                    {(item) => (
+                        <>
+                            <Text style={style.txt}>{item.name}</Text>
+                            <Image style={style.logos} source={item.logo} />
+                        </>
+                    )}
+                </ListButtons>
+
             </View>
-
-            <ListButtons array={marcas} dest={"/screen_connection"} >
-                {(item) => (
-                    <>
-                        <Text style={style.txt}>{item.name}</Text>
-                        <Image style={style.logos} source={item.logo} /> {/*o source nao aceita caminhos dinâmicos*/}
-                    </>
-                )}
-            </ListButtons>
-
         </Background>
     );
 }
 
 const style = StyleSheet.create({
+    body:{
+        width:"100%",
+        //margin:"auto",
+    },
     txt:{
-        color:"black",
-        fontSize:30,
+        color:"rgba(0, 0, 0, 1)",
+        fontSize:33,
     },
 
     logos:{
         resizeMode:"contain",
         width:75,
-        height:50,
-        marginRight:10,
+        height:40,
+        
     },
 
 
@@ -76,6 +81,9 @@ const style = StyleSheet.create({
         textAlign:"center",
         color:"white",
         marginRight: 10,
+
+        fontFamily:"system-ui",
+        fontWeight:"bold",
  
     },
 
@@ -84,8 +92,8 @@ const style = StyleSheet.create({
         flexDirection: 'row',
         resizeMode:"contain",
 
-        width:60,
-        height:60,
+        width:50,
+        height:30,
     },
 })
 

@@ -14,7 +14,7 @@ export default function searchdevices(Params) {
     const search = () => {
         zeroconf.scan(`${Params.service}`, 'tcp', 'local.') // TVS LG, Samsung, Sony, Vizio, TCL
 
-        zeroconf.on('start', () => console.log(`🔎 Buscando dispositivos ${Params.name}`)); //avisa quando a busaca comecou 
+        zeroconf.on('start', () => console.log(`🔎 Buscando dispositivos ${Params.name}`)); //avisa quando a busca comecou 
 
         zeroconf.on('found', (name) => console.log('Serviço encontrado:', name)); //disparado quando qualquer serviço é detectado na rede., Ele captura o nome e mostra no console
 
@@ -32,10 +32,12 @@ export default function searchdevices(Params) {
 
         zeroconf.on('error', (err) => console.log('Erro Zeroconf:', err)); //dispara quando algo dá errado
 
+        /*
         return () => {
             zeroconf.stop();
             zeroconf.removeAllListeners();
-        };
+        };*/
+        
     }
 
     search();

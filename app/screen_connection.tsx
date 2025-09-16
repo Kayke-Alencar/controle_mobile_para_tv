@@ -18,59 +18,94 @@ export default function App() {
   const params = useLocalSearchParams()
   const devices = searchdevices(params)
 
-  return (
-    <Background>
 
-      <View style={{ marginTop: 40 }}> {/* Apenas para o primeiro btt nao grudar em cima  */}
+  const render = () => {
+    if (devices.length != 0) {
+      return (
+        <Background>
 
-      </View>
+          <Text style={styles.title}>Dispositivos Encontrados</Text>
 
-      <ListButtons array={devices} dest={"layout_controle"}>
-        {(item) => (
-          <>
-            <View>
-              <Text style={styles.title}>{item.name.slice(0, 10)}.....</Text>
-              <Text style={styles.text}>{item.host}</Text>
+          <ListButtons array={devices} dest={"layout_controle"}>
+            {(item) => (
+              <>
+                <View>
+                  <Text style={styles.titleButton}>{item.name.slice(0, 10)}.....</Text>
+                  <Text style={styles.text}>{item.host}</Text>
+                </View>
+              </>
+            )}
+          </ListButtons>
+
+        </Background>
+      )
+    }
+
+    else {
+      return (
+        <Background>
+            <View style={styles.notDevices}>
+              <Text style={styles.txtNotDevices}>Nenhum Dispositivo</Text>
+              <Text style={styles.txtNotDevices}>Encontrado</Text>
             </View>
-          </>
-        )}
-      </ListButtons>
+        </Background>
+      )
+    }
+  }
 
-    </Background>
-  );
+
+  return render()
 }
 
 
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 20, backgroundColor: '#fff' },
-  list: { marginTop: 20 },
+  title: {
+    padding: 10,
+    marginBottom: 20,
 
+    color: "white",
+    fontSize: 30,
+    fontWeight: "bold",
 
+  },
+  card: {
+    padding: 20,
+    backgroundColor: '#a7aabdff',
+    width: "95%",
+    height: "90%",
 
-  card: { 
-    padding: 20, 
-    backgroundColor: '#a7aabdff', 
-    width:"95%",
-    height:"90%",
-
-    margin:"auto",
-    borderRadius:15,
-    marginBottom: 10 
+    margin: "auto",
+    borderRadius: 15,
+    marginBottom: 10
   },
 
-  title: { 
-    fontSize: 30, 
+  titleButton: {
+    fontSize: 30,
     //fontWeight: 'bold', 
-    paddingBottom:5,
-    marginTop:-8,
+    paddingBottom: 5,
+    marginTop: -8,
   },
-  text: { 
+  notDevices: {
+    width:"100%",
+    height:"100%",             
+    justifyContent: "center",// centraliza verticalmente
+    alignItems: "center",    // centraliza horizontalmente
+
+  },
+  
+  txtNotDevices: {
+    color: "white",
+    fontSize: 30,
+    fontWeight:"bold",
+  },
+
+  text: {
     fontSize: 20,
 
   },
   teste: {
-    width:"100%",
-    height:"100%",
+    width: "100%",
+    height: "100%",
 
   },
 });
