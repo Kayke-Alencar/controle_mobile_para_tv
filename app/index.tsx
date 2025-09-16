@@ -50,7 +50,7 @@ const style = StyleSheet.create({
     },
     txt:{
         color:"rgba(0, 0, 0, 1)",
-        fontSize:33,
+        fontSize:30,
     },
 
     logos:{
@@ -80,7 +80,7 @@ const style = StyleSheet.create({
         fontSize:40,
         textAlign:"center",
         color:"white",
-        marginRight: 10,
+        //marginRight: 10,
 
         fontFamily:"system-ui",
         fontWeight:"bold",

@@ -6,7 +6,7 @@ export default function Background(props) {
     return (
         <LinearGradient
             // Cores do gradiente
-            colors={["rgba(0, 6, 58, 1)", "rgba(0, 1, 17, 1)"]}
+            colors={["rgba(0, 6, 58, 1)", "rgba(0, 0, 0, 1)"]}
             // Direção do gradiente
             start={{ x: 1, y: 0 }}
             end={{ x: 0, y: 1 }}
@@ -27,5 +27,6 @@ const style = StyleSheet.create({
         height:"100%",
 
         alignItems:"center",
+        
     },
 })

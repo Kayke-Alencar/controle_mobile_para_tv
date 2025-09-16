@@ -9,11 +9,10 @@ export default function ListButtons({array, dest, children}){ //tbm poderia ussa
         flexDirection: 'row', //um do lado do outro
         justifyContent:"space-between", //espaço entre os itens
 
-        padding:17,
-        backgroundColor:"rgba(207, 207, 207, 1)",
+        padding:20,
+        backgroundColor:"rgba(202, 202, 202, 1)",
         borderRadius:30,
         width:"90%",
-        //height:75,
         margin:"auto",
         marginBottom:10,
     },
