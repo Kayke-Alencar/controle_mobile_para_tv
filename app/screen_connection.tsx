@@ -60,7 +60,7 @@ export default function App() {
 
 const styles = StyleSheet.create({
   title: {
-    padding: 20,
+    padding: 10,
     marginBottom: 20,
 
     color: "white",
