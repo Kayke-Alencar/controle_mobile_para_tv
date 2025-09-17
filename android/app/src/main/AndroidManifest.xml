@@ -25,6 +25,7 @@
         <category android:name="android.intent.category.DEFAULT"/>
         <category android:name="android.intent.category.BROWSABLE"/>
         <data android:scheme="controle"/>
+        <data android:scheme="exp+controle"/>
       </intent-filter>
     </activity>
   </application>

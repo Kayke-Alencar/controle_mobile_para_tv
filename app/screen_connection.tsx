@@ -60,7 +60,7 @@ export default function App() {
 
 const styles = StyleSheet.create({
   title: {
-    padding: 10,
+    padding: 20,
     marginBottom: 20,
 
     color: "white",
@@ -80,9 +80,9 @@ const styles = StyleSheet.create({
   },
 
   titleButton: {
-    fontSize: 30,
+    fontSize: 25,
     //fontWeight: 'bold', 
-    paddingBottom: 5,
+    
     marginTop: -8,
   },
   notDevices: {
