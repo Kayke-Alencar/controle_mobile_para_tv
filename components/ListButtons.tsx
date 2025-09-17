@@ -14,6 +14,7 @@ export default function ListButtons({array, dest, children}){ //tbm poderia ussa
         borderRadius:30,
         width:"90%",
         margin:"auto",
+        
         marginBottom:10,
     },
 
