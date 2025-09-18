@@ -15,8 +15,12 @@ import searchdevices from '../components/SearchDevices';
 
 
 export default function App() {
-  const params = useLocalSearchParams()
-  const devices = searchdevices(params)
+  const {obj} = useLocalSearchParams()
+
+  //param: verica se é um array de string ou uma string, Se for array faz o join() que tranforma em string se nao apenas retorna o obj, dps transforma o "jSON" em obj js 
+  const index_params = JSON.parse(Array.isArray(obj) ? obj.join('') : obj); 
+  
+  const devices = searchdevices(index_params.default)
 
 
   const render = () => {
@@ -26,7 +30,7 @@ export default function App() {
 
           <Text style={styles.title}>Dispositivos Encontrados</Text>
 
-          <ListButtons array={devices} dest={"layout_controle"}>
+          <ListButtons array={devices} dest={"layout_controle"} param={index_params}>
             {(item) => (
               <>
                 <View>
