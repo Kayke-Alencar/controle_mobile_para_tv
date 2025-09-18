@@ -1,10 +1,11 @@
 import {
+  StyleSheet,
   Text,
   View
 } from 'react-native';
 
 import React from 'react';
-import { StyleSheet } from 'react-native';
+
 
 import { useLocalSearchParams } from 'expo-router/build/hooks';
 
@@ -17,10 +18,11 @@ import searchdevices from '../components/SearchDevices';
 export default function App() {
   const {obj} = useLocalSearchParams()
 
-  //param: verica se é um array de string ou uma string, Se for array faz o join() que tranforma em string se nao apenas retorna o obj, dps transforma o "jSON" em obj js 
-  const index_params = JSON.parse(Array.isArray(obj) ? obj.join('') : obj); 
+  //verifica se é um array de string ou uma string, Se for array faz o join() e transofoema em string se nao apenas a retorna, 
+  // logo em seguida a str "jSON" e transformada em obj js 
+  const obj_params = JSON.parse(Array.isArray(obj) ? obj.join('') : obj); 
   
-  const devices = searchdevices(index_params.default)
+  const devices = searchdevices(obj_params.default);
 
 
   const render = () => {
@@ -28,13 +30,13 @@ export default function App() {
       return (
         <Background>
 
-          <Text style={styles.title}>Dispositivos Encontrados</Text>
+          <Text style={styles.title}>TVs Encontrados</Text>
 
-          <ListButtons array={devices} dest={"layout_controle"} param={index_params}>
+          <ListButtons array={devices} dest={"layout_controle"} param={obj_params}>
             {(item) => (
               <>
                 <View>
-                  <Text style={styles.titleButton}>{item.name.slice(0, 10)}.....</Text>
+                  <Text style={styles.titleButton}>{item.name.slice(0, 15)}.....</Text>
                   <Text style={styles.text}>{item.host}</Text>
                 </View>
               </>

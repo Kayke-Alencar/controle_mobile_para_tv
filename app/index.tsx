@@ -25,11 +25,11 @@ export default function index(){
         <Background>
             <View style={style.body}>
                 <View style={style.header}>
-                    <Text style={style.titulo}>Qual marca ?</Text>
+                    <Text style={style.titulo}>qual marca ?</Text>
                     <Image style={style.tv} source={require("../assets/images/tv2.png")} />
                 </View>
 
-                <ListButtons array={marcas} dest={"/screen_connection"} >
+                <ListButtons array={marcas} dest={"/devices"} color="rgba(18, 55, 92, 1)">
                     {(item) => (
                         <>
                             <Text style={style.txt}>{item.name}</Text>
@@ -49,13 +49,13 @@ const style = StyleSheet.create({
         //margin:"auto",
     },
     txt:{
-        color:"rgba(0, 0, 0, 1)",
+        color:"rgba(255, 255, 255, 1)",
         fontSize:30,
     },
 
     logos:{
         resizeMode:"contain",
-        width:75,
+        width:80,
         height:40,
         
     },
@@ -71,15 +71,15 @@ const style = StyleSheet.create({
         justifyContent:"center",
         alignItems:"center", 
 
-        paddingBottom:30,
+        marginBottom:30,
         paddingTop:20, 
 
     },
 
     titulo:{
-        fontSize:40,
+        fontSize:45,
         textAlign:"center",
-        color:"white",
+        color:"rgba(255, 255, 255, 1)",
         //marginRight: 10,
 
         fontFamily:"system-ui",

@@ -2,20 +2,25 @@ import { router } from "expo-router";
 import React from "react";
 import { FlatList, StyleSheet, TouchableOpacity, View } from "react-native";
 
-export default function ListButtons({array, dest,param=undefined,children}){ //tbm poderia ussar apenas (props) assim fica mais 
+export default function ListButtons({array, dest,param=undefined,color="white",children}){ //tbm poderia ussar apenas (props) assim fica mais 
     
     const style = StyleSheet.create({
     bodyButton:{
         flexDirection: 'row', //um do lado do outro
         justifyContent:"space-between", //espaço entre os itens
 
-        padding:20,
-        backgroundColor:"rgba(202, 202, 202, 1)",
-        borderRadius:30,
-        width:"90%",
+        width:"94%",
         margin:"auto",
+
+        padding:20,
+        marginBottom:13,
+
+        backgroundColor:color,
+        boxShadow:"-1px 7px 5px -1px rgba(0, 0, 0, 1)",
+        borderRadius:30,
+
         
-        marginBottom:10,
+
     },
 
     btn:{

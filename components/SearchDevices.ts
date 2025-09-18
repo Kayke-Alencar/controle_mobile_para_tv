@@ -4,15 +4,15 @@ import Zeroconf from 'react-native-zeroconf';
 
 export default function searchdevices(Params) {
     const [devices, setDevices] = useState([]);
-    const [deviceByMark, setDeviceByMark] = useState([])
+    const [deviceByMark, setDeviceByMark] = useState([]);
     const zeroconf = new Zeroconf();
 
 
     //Só pode ser chamada aqui, diretamente no corpo do componente nunca dentro de um func
-    const [teste, setTeste] = useState("undefinid")
+    const [teste, setTeste] = useState("undefinid");
 
     const search = () => {
-        zeroconf.scan(`${Params.service}`, 'tcp', 'local.') // TVS LG, Samsung, Sony, Vizio, TCL
+        zeroconf.scan(`${Params.service}`, 'tcp', 'local.'); // TVS LG, Samsung, Sony, Vizio, TCL
 
         zeroconf.on('start', () => console.log(`🔎 Buscando dispositivos ${Params.name}`)); //avisa quando a busca comecou 
 
@@ -45,20 +45,20 @@ export default function searchdevices(Params) {
     useEffect(() => {
         const filterDevices = () => {
             if (devices.length != 0) { //quando a pg é iniciada e devices e setado como um array vazio o que chama a func e gera erro, pois devices ainda nao foi montado
-                let selectMark = `${Params.name}`.toLocaleLowerCase() //força marca para string com caixa baixa
+                let selectMark = `${Params.name}`.toLocaleLowerCase(); //força marca para string com caixa baixa
 
                 setDeviceByMark(
                     devices.filter((item) => item.name.toLocaleLowerCase().includes(selectMark))
-                )
-                setTeste(selectMark)
+                );
+                setTeste(selectMark);
             }
             else {
                 return undefined
             }
         }
         filterDevices();
-    }, [devices])
+    }, [devices]);
 
 
-    return deviceByMark
+    return deviceByMark;
 }
