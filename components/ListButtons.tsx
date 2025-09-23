@@ -9,7 +9,7 @@ export default function ListButtons({array, dest,param=undefined,color="white",c
         flexDirection: 'row', //um do lado do outro
         justifyContent:"space-between", //espaço entre os itens
 
-        width:"94%",
+        width:"93%",
         margin:"auto",
 
         padding:20,
