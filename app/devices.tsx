@@ -11,7 +11,8 @@ import { useLocalSearchParams } from 'expo-router/build/hooks';
 
 import Background from '@/components/Background';
 import ListButtons from '@/components/ListButtons';
-import searchdevices from '../components/SearchDevices';
+import commands from '@/services/commands';
+import searchdevices from '../services/searchDevices';
 
 
 
@@ -20,9 +21,12 @@ export default function App() {
 
   //verifica se é um array de string ou uma string, Se for array faz o join() e transofoema em string se nao apenas a retorna, 
   // logo em seguida a str "jSON" e transformada em obj js 
-  const obj_params = JSON.parse(Array.isArray(obj) ? obj.join('') : obj); 
-  
-  const devices = searchdevices(obj_params.default);
+  const mark = JSON.parse(Array.isArray(obj) ? obj.join('') : obj); 
+
+  const devices = searchdevices(mark.default);
+
+  const command = commands()
+  command.lg.connection();
 
 
   const render = () => {
@@ -32,7 +36,7 @@ export default function App() {
 
           <Text style={styles.title}>TVs Encontrados</Text>
 
-          <ListButtons array={devices} dest={"layout_controle"} param={obj_params}>
+          <ListButtons array={devices} dest={"layout_controle"} param={mark}>
             {(item) => (
               <>
                 <View>

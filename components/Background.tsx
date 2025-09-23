@@ -6,7 +6,7 @@ export default function Background(props) {
     return (
         <LinearGradient
             // Cores do gradiente
-            colors={["rgba(23, 43, 73, 1)", "rgba(13, 25, 43, 1)"]}
+            colors={["rgba(17, 32, 54, 1)", "rgba(19, 36, 61, 1)"]}
             // Direção do gradiente
             start={{ x: 1, y: 0 }}
             end={{ x: 0, y: 1 }}

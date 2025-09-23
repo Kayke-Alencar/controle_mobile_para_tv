@@ -13,10 +13,10 @@ export default function ListButtons({array, dest,param=undefined,color="white",c
         margin:"auto",
 
         padding:20,
-        marginBottom:13,
+        marginBottom:12,
 
         backgroundColor:color,
-        boxShadow:"-1px 7px 5px -1px rgba(0, 0, 0, 1)",
+        boxShadow:"-1px 7px 9px -1px rgba(0, 0, 0, 1)",
         borderRadius:30,
 
         

@@ -25,11 +25,11 @@ export default function index(){
         <Background>
             <View style={style.body}>
                 <View style={style.header}>
-                    <Text style={style.titulo}>qual marca ?</Text>
+                    <Text style={style.titulo}>qual marca?</Text>
                     <Image style={style.tv} source={require("../assets/images/tv2.png")} />
                 </View>
 
-                <ListButtons array={marcas} dest={"/devices"} color="rgba(18, 55, 92, 1)">
+                <ListButtons array={marcas} dest={"/devices"} color="rgba(17, 52, 87, 1)">
                     {(item) => (
                         <>
                             <Text style={style.txt}>{item.name}</Text>
