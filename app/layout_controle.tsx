@@ -1,9 +1,9 @@
 import React from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet, Text } from "react-native";
 
 import Background from "@/components/Background";
 import { useLocalSearchParams } from "expo-router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import commands from "@/services/commands";
 
@@ -19,23 +19,28 @@ export default function (){
 
     const command = commands();
     
-
+    const [message, setMessage] = useState("Nada Ainda")
 
    useEffect(()=>{
     const connect = command[mark.name].connection(device.host, device.port);
+
+    connect.onerror = (error)=>{
+        console.log(error)
+        setMessage(JSON.stringify(error))
+    } 
 
     if(mark.name === "chromecast" ){
         setTimeout(()=>{
             console.log("teste");
         },1000)
     } 
-
    },[])
 
 
 
     return(
         <Background>
+            <Text style={{color:"white", fontSize:15}}>{message}</Text>
             
         </Background>
     )
