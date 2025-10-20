@@ -4,7 +4,7 @@ export default function commands(){
             connection:(ip, porta)=>{
                 setTimeout(()=>{
                     console.log(`DEVICE: LG, IP: ${ip}  PORTA: ${porta}`)
-                },1000)
+                },1000);
 
 
                 const register = {  //obj JSON que sera enviado para tv, ele sera responsavel por pedir as persmissoes necessarias para app funcionar
@@ -34,12 +34,24 @@ export default function commands(){
                         }
                     }
                 }
+                
+                const url = (ip, porta)=>{
+                    if (porta == "3000" || porta == "3002"){
+                        return `ws://${ip}:${porta}`
+                    }
+                    else{
+                        // porta 3001 ou 3003
+                        return `wss://${ip}:${porta}`
+                    }
+                }
 
-                const ws = new WebSocket(`ws://${ip}:${porta}`); //cria uma conexao webSocket com a tv
+                const ws = new WebSocket(url(ip, porta)); //cria uma conexao webSocket com a tv
 
                 ws.onopen = ()=>{ //executado quando a conexao é estabelecida
-                    ws.send(JSON.stringify(register)) //ws.send evia o Register em forma de JSON 
+                    ws.send(JSON.stringify(register)) //ws.send envia o Register em forma de JSON 
                 }
+
+                return ws
             }, 
         },
 
@@ -47,7 +59,7 @@ export default function commands(){
             connection: () => {
                 setTimeout(() => {
                     console.log("connection da samsung")
-                }, 1000)
+                }, 1000);
             }
         },
 
@@ -55,7 +67,7 @@ export default function commands(){
             connection: () => {
                 setTimeout(() => {
                     console.log("connection da philips")
-                }, 1000)
+                }, 1000);
             }
 
         },
@@ -64,7 +76,7 @@ export default function commands(){
             connection: () => {
                 setTimeout(() => {
                     console.log("connection da multlaser")
-                }, 1000)
+                }, 1000);
             }
         },
 
@@ -72,7 +84,7 @@ export default function commands(){
             connection: () => {
                 setTimeout(() => {
                     console.log("connection do chromecast")
-                }, 1000)
+                }, 1000);
             }
 
         },

@@ -3,22 +3,34 @@ import { StyleSheet } from "react-native";
 
 import Background from "@/components/Background";
 import { useLocalSearchParams } from "expo-router";
-//import { useEffect } from "react";
+import { useEffect } from "react";
 
 import commands from "@/services/commands";
 
 export default function (){
-    const {obj} = useLocalSearchParams()
-    const param = JSON.parse(Array.isArray(obj) ? obj.join(""): obj)
+    const {obj} = useLocalSearchParams();
 
-    const marks = param.opitional
-    const device = param.default
+    //param: verifica se é um array de string ou uma string, Se for array faz o join() e transofoema em string se nao apenas a retorna, 
+    // logo em seguida a str "jSON" e transformada em obj js 
+    const param = JSON.parse(Array.isArray(obj) ? obj.join(""): obj);
 
-    const command = commands()
-    command.lg.connection(device.host, device.port)
+    const mark = param.opitional;
+    const device = param.default;
+
+    const command = commands();
+    
 
 
-   // useEffect(()=>{})
+   useEffect(()=>{
+    const connect = command[mark.name].connection(device.host, device.port);
+
+    if(mark.name === "chromecast" ){
+        setTimeout(()=>{
+            console.log("teste");
+        },1000)
+    } 
+
+   },[])
 
 
 

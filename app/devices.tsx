@@ -18,12 +18,12 @@ import searchdevices from '../services/searchDevices';
 export default function App() {
   const {obj} = useLocalSearchParams()
 
-  //verifica se é um array de string ou uma string, Se for array faz o join() e transofoema em string se nao apenas a retorna, 
+  //param: verifica se é um array de string ou uma string, Se for array faz o join() e transofoema em string se nao apenas a retorna, 
   // logo em seguida a str "jSON" e transformada em obj js 
   const param = JSON.parse(Array.isArray(obj) ? obj.join('') : obj); 
 
-  const marks = param.default
-  const devicesFound = searchdevices(marks);
+  const mark = param.default //obj com atributos da marca em que o usuario clicou, é enviado por padrao pelos btns do ListButtons 
+  const devicesFound = searchdevices(mark); //busca dispositivos de uma marca especifica na rede
 
 
   const render = () => {
@@ -33,7 +33,7 @@ export default function App() {
 
           <Text style={styles.title}>TVs Encontrados</Text>
 
-          <ListButtons array={devicesFound} dest={"layout_controle"} param={marks}>
+          <ListButtons array={devicesFound} dest={"layout_controle"} param={mark}>
             {(item) => (
               <>
                 <View>
