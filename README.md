@@ -14,11 +14,11 @@ Desenvolver um aplicativo simples e funcional que permita o usuário controlar s
 
 - React Native
 - Expo (com suporte a módulos nativos via EAS)
-- Kotlin (para funcionalidades nativas de rede no Android)
 - Integração com APIs e protocolos de fabricantes como:
-  - Samsung (SmartThings)
-  - Philips (JointSPACE)
-  - Multilaser (em análise)
+  - LG 
+  - Samsung 
+  - Philips 
+  - Multilaser
 
 ---
 
@@ -26,7 +26,6 @@ Desenvolver um aplicativo simples e funcional que permita o usuário controlar s
 ## 🔄 Funcionalidades
 
 - Interface base com botões personalizados
-- Módulo nativo para escanear dispositivos na rede (Kotlin)
 - Identificação automática de marcas e modelos de TV
 - Conexão e pareamento com a TV
 - Suporte completo a comandos remotos (volume, canais, apps, desligar)
