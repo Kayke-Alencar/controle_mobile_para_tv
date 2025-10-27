@@ -16,8 +16,8 @@ export default function ListButtons({array, dest,param=undefined,color="white",c
         marginBottom:12,
 
         backgroundColor:color,
-        boxShadow:"-1px 7px 9px -1px rgba(0, 0, 0, 1)",
-        borderRadius:30,
+        boxShadow:"-1px 7px 9px -1px rgba(0, 0, 0, 0.64)",
+        borderRadius:20,
 
         
 

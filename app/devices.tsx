@@ -31,14 +31,15 @@ export default function App() {
       return (
         <Background>
 
-          <Text style={styles.title}>TVs Encontrados</Text>
+          <Text style={styles.title}>TVs Encontradas</Text>
 
           <ListButtons array={devicesFound} dest={"layout_controle"} param={mark}>
             {(item) => (
               <>
-                <View>
+                <View style={{width:"100%"}}>
                   <Text style={styles.titleButton}>{item.name.slice(0, 15)}.....</Text>
-                  <Text style={styles.text}>{item.host}</Text>
+                  <Text style={styles.text}>ip: {item.host}</Text>
+                  <Text style={styles.text}>port: {item.port}</Text>
                 </View>
               </>
             )}
@@ -107,7 +108,7 @@ const styles = StyleSheet.create({
   },
 
   text: {
-    fontSize: 20,
+    fontSize: 17,
 
   },
   teste: {

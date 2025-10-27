@@ -13,7 +13,7 @@ import ListButtons from "@/components/ListButtons"; //button personalizado com T
 
 export default function index(){
     const marcas = [
-        {name:"lg", logo:require("../assets/images/marcas/lg-icon.png"), service:"_lgtv"}, //o rquire é usado aqui pq sourece no Image nao aceita caminhos dinâmicos
+        {name:"lg", logo:require("../assets/images/marcas/lg-icon.png"), service:"airplay"}, //o rquire é usado aqui pq sourece no Image nao aceita caminhos dinâmicos
         {name:"samsung",logo:require("../assets/images/marcas/sansung-icon.png"), service:"airplay"},
         {name:"philips", logo:require("../assets/images/marcas/philips-icon.png"), service:"googlecast"},                    
         {name:"multlaser", logo:require("../assets/images/marcas/multilaser-icon.png"), service:"googlecast" },
@@ -25,14 +25,14 @@ export default function index(){
         <Background>
             <View style={style.body}>
                 <View style={style.header}>
-                    <Text style={style.titulo}>qual marca?</Text>
+                    <Text style={style.titulo}>Qual marca ?</Text>
                     <Image style={style.tv} source={require("../assets/images/tv2.png")} />
                 </View>
 
-                <ListButtons array={marcas} dest={"/devices"} color="rgba(17, 52, 87, 1)">
+                <ListButtons array={marcas} dest={"/devices"} color="rgba(0, 45, 90, 1)">
                     {(item) => (
                         <>
-                            <Text style={style.txt}>{item.name}</Text>
+                            <Text style={style.txt}>{item.name[0].toUpperCase()+item.name.slice(1, item.name.length)}</Text>
                             <Image style={style.logos} source={item.logo} />
                         </>
                     )}
@@ -49,7 +49,7 @@ const style = StyleSheet.create({
         //margin:"auto",
     },
     txt:{
-        color:"rgba(255, 255, 255, 1)",
+        color:"rgba(226, 226, 226, 1)",
         fontSize:30,
     },
 
@@ -77,7 +77,7 @@ const style = StyleSheet.create({
     },
 
     titulo:{
-        fontSize:45,
+        fontSize:35,
         textAlign:"center",
         color:"rgba(255, 255, 255, 1)",
         //marginRight: 10,
@@ -91,6 +91,7 @@ const style = StyleSheet.create({
         //resizeMode:"stretch", //para esticar a imagem, mas fica feio
         flexDirection: 'row',
         resizeMode:"contain",
+        marginLeft:5,
 
         width:50,
         height:30,
