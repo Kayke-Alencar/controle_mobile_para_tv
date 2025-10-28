@@ -12,7 +12,7 @@ export default function commands(){
 
                     payload: { //Contém os dados necessários para registrar o app.
                         forcePairing: false, //não força pareamento se o usuario ja tiver se conectado antes
-                        pairingType: "PROMPT", //pede ao usuario a autorização, (dps testa com "PIN" !!)
+                        pairingType: "PROMPT", //pede ao usuario a autorização
 
                         manifest: { //Descreve o app que quer se registrar.
                             manifestVersion: 1,
