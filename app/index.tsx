@@ -13,7 +13,7 @@ import ListButtons from "@/components/ListButtons"; //button personalizado com T
 
 export default function index(){
     const marcas = [
-        {name:"lg", logo:require("../assets/images/marcas/lg-icon.png"), service:"lgtv"}, //o rquire é usado aqui pq sourece no Image nao aceita caminhos dinâmicos
+        {name:"lg", logo:require("../assets/images/marcas/lg-icon.png"), service:"webos-tv"}, //o rquire é usado aqui pq sourece no Image nao aceita caminhos dinâmicos
         {name:"samsung",logo:require("../assets/images/marcas/sansung-icon.png"), service:"airplay"},
         {name:"philips", logo:require("../assets/images/marcas/philips-icon.png"), service:"googlecast"},                    
         {name:"multlaser", logo:require("../assets/images/marcas/multilaser-icon.png"), service:"googlecast" },
