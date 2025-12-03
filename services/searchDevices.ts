@@ -12,7 +12,7 @@ export default function searchdevices(Params) {
     const [teste, setTeste] = useState("undefinid");
 
     const search = () => {
-        zeroconf.scan(`${Params.service}`, 'tcp', 'local.'); // TVS LG, Samsung, Sony, Vizio, TCL
+        zeroconf.scan(`${Params.service}`, 'tcp', 'local'); // TVS LG, Samsung, Sony, Vizio, TCL
 
         zeroconf.on('start', () => console.log(`🔎 Buscando dispositivos ${Params.name}`)); //avisa quando a busca comecou 
 
