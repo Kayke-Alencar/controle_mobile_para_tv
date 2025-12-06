@@ -35,7 +35,7 @@ export default function commands(){
                     }
                 }
                 
-                const url = (ip, porta)=>{
+                /*const url = (ip, porta)=>{
                     if (porta == "3000" || porta == "3002"){
                         return `ws://${ip}:${porta}`
                     }
@@ -43,9 +43,9 @@ export default function commands(){
                         // porta 3001 ou 3003
                         return `wss://${ip}:${porta}`
                     }
-                }
+                }*/
 
-                const ws = new WebSocket(url(ip, porta)); //cria uma conexao webSocket com a tv
+                const ws = new WebSocket(`wss://${ip}:3001`); //cria uma conexao webSocket com a tv
 
                 ws.onopen = ()=>{ //executado quando a conexao é estabelecida
                     ws.send(JSON.stringify(register)) //ws.send envia o Register em forma de JSON 
